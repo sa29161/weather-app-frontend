@@ -1,0 +1,35 @@
+<body>
+ <link href="weather.component.css" rel="stylesheet" type="text/css"/>
+ <h1 style="text-align:center;">
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">city</span>
+    </div>
+    <input type="text" #cityInput class="form-control"  aria-describedby="basic-addon1">
+  </div>
+
+<div class="tab" style="text-align:center;">
+  <button ng type="button" class="btn btn-primary" (click) ='getWeather(cityInput.value)'>Get Weather</button>
+  &nbsp;
+  <button type="button" class="btn btn-primary" (click) ='getForecast(cityInput.value)'>Get Forecast</button>
+</div>
+<div *ngIf="showWeather" id="Get Weather" class="tabcontent">
+  {{returnedWeather.name}}
+  {{returnedWeather.main.temp}}
+  {{returnedWeather.weather[0].description}}
+  <img src = "http://openweathermap.org/img/wn/{{returnedWeather.weather[0].icon}}@2x.png">
+ {{returnedWeather.wind.speed}} 
+</div>
+
+<div *ngIf="showForcast" id="Get Forecast" class="tabcontent" >
+  {{returnedForecast.list[0].main.temp}}
+  {{returnedForecast.list[0].weather[0].description}}
+  {{returnedForecast.city.name}}
+  <img src = "http://openweathermap.org/img/wn/{{returnedForecast.list[0].weather[0].icon}}@2x.png">
+  {{returnedForecast.list[0].wind.speed}}
+</div>
+</h1>
+</body>
+
+
