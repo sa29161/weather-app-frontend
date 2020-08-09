@@ -1,4 +1,10 @@
 <body>
+<h1 style="text-align:center;">Weather Report</h1>
+<nav>
+  <ul>
+    <li><a href="/login">Login</a></li>
+  </ul>
+</nav>
  <link href="weather.component.css" rel="stylesheet" type="text/css"/>
  <h1 style="text-align:center;">
 
@@ -9,25 +15,38 @@
     <input type="text" #cityInput class="form-control"  aria-describedby="basic-addon1">
   </div>
 
+
 <div class="tab" style="text-align:center;">
   <button ng type="button" class="btn btn-primary" (click) ='getWeather(cityInput.value)'>Get Weather</button>
   &nbsp;
   <button type="button" class="btn btn-primary" (click) ='getForecast(cityInput.value)'>Get Forecast</button>
-</div>
-<div *ngIf="showWeather" id="Get Weather" class="tabcontent">
-  {{returnedWeather.name}}
-  {{returnedWeather.main.temp}}
-  {{returnedWeather.weather[0].description}}
-  <img src = "http://openweathermap.org/img/wn/{{returnedWeather.weather[0].icon}}@2x.png">
- {{returnedWeather.wind.speed}} 
+  <div id="box">
+  </div>
 </div>
 
-<div *ngIf="showForcast" id="Get Forecast" class="tabcontent" >
-  {{returnedForecast.list[0].main.temp}}
-  {{returnedForecast.list[0].weather[0].description}}
-  {{returnedForecast.city.name}}
-  <img src = "http://openweathermap.org/img/wn/{{returnedForecast.list[0].weather[0].icon}}@2x.png">
-  {{returnedForecast.list[0].wind.speed}}
+<div *ngIf="showWeather" id="Get Weather" class="tabcontent">
+  <ul>
+  <li style="font-size: 45px; position: relative; top: -417px" >{{returnedWeather.name}}
+  </li>
+  <li style="font-size: 60px; position: relative; top: -350px;">{{returnedWeather.main.temp}}<span>&#176;</span>F</li>
+  <li style="font-size: 25px; position: relative; top: -335px; left: -270px;">{{returnedWeather.weather[0].description}}</li>
+  <li style="position: relative; top: -510px; left: -270px;"><img src = "http://openweathermap.org/img/wn/{{returnedWeather.weather[0].icon}}@4x.png"></li>
+  <li style="font-size: 18px; position: relative; top: -650px; left: 270px;">Wind Speed: {{returnedWeather.wind.speed}} mph</li>
+  <li style="font-size: 18px; position: relative; top: -650px; left: 239px;">Humidity: {{returnedWeather.main.humidity}}%</li>
+  <li style="font-size: 18px; position: relative; top: -650px; left: 252px;">Pressure: {{returnedWeather.main.pressure}} hPa</li>
+  
+  
+  <li style="position: relative;" *ngFor = "let item of returnedForecast.list">{{item.wind.speed}}</li>
+</ul>
+</div>
+
+<div  *ngIf="showForcast" id="GetF" class="tabcontent">
+<ul id="Fl">
+  <li style="font-size: 22px; text-align: left;" *ngFor = "let item of returnedForecast.list">{{ item.dt_txt | date:'medium'}} </li>
+  <li *ngFor = "let item of returnedForecast.list"><img src = "http://openweathermap.org/img/wn/{{item.weather[0].icon}}@2x.png"></li>
+  <li *ngFor = "let item of returnedForecast.list">{{item.main.temp}}<span>&#176;</span>F</li>
+  <li *ngFor = "let item of returnedForecast.list">{{item.wind.speed}}</li>
+</ul>
 </div>
 </h1>
 </body>

@@ -1,4 +1,40 @@
 html, body {
-    margin: 0;
-    height: 100%;
+  margin: auto;
+  width: auto;
+  height: 2000px;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVeTYut9KFaValQpTQfly7E55FaGvZ9nk7bg&usqp=CAU');
+  background-repeat: no-repeat;
+  background-size: 5000px;
 }
+
+li {
+    list-style-type: none;
+}
+
+#times ul{
+    display: inline-flex;
+    position: relative;
+    top: -300px;
+  }
+
+#times li{
+    position: static;
+    margin: 10px;
+  }
+
+#GetF{
+  width: 900px;
+  height: 500px;
+  border: 6px solid white;
+  padding: 50px;
+  margin: 20px;
+  position: relative;
+  top: 5px;
+  left: 295px;
+  overflow: auto;
+}
+
+#Fl{
+  
+}
+

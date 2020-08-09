@@ -6,6 +6,7 @@ import {WeatherModel} from '../model/WeatherModel';
 import { ForecastModel } from '../model/ForecastModel';
 
 
+
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
   httpOptions = {
@@ -15,7 +16,6 @@ export class WeatherService {
   constructor(
     private http: HttpClient) { }
 
-  /** GET heroes from the server */
   getWeather(city: string): Observable<WeatherModel[]> {
     return this.http.get<WeatherModel[]>('http://localhost:8080/settings/weather?city='+city);
   }
@@ -24,4 +24,5 @@ export class WeatherService {
     return this.http.get<ForecastModel[]>('http://localhost:8080/settings/forecast?city='+city);
   }
   
+
 }

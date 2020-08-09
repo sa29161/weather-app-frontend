@@ -5,19 +5,27 @@ import { WeatherComponent } from './weather.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from "@angular/common";
+import { LoginComponent } from 'src/app/login/login.component';
+import {Routes, RouterModule} from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
-    WeatherComponent
+    WeatherComponent,
+    LoginComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
-  providers: [],
+  exports:[WeatherComponent],
+    
+  providers: [DatePipe],
   bootstrap: [WeatherComponent]
 })
 export class AppModule { }

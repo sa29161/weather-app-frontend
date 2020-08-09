@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {WeatherService} from '../../services/WeatherService';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './weather.component.html',
@@ -9,10 +8,13 @@ import {WeatherService} from '../../services/WeatherService';
 })
 
 export class WeatherComponent {
-  constructor(private WeatherService: WeatherService) {} 
+  constructor(private WeatherService: WeatherService) {
+  } 
 
 returnedWeather;
 returnedForecast;
+returnedDay;
+datePipeString : string;
 
 showWeather: boolean = false;
 showForcast: boolean = false;
@@ -35,5 +37,7 @@ getForecast(city:string){
       this.showForcast = true;
     });
   }
+
+
 
 }
